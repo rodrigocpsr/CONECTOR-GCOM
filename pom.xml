@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.autenticis.comven</groupId>
+	<artifactId>connector</artifactId>
+	<packaging>jar</packaging>
+	<version>1.1</version>
+	<name>conectorDetran</name>
+	<description>biblioteca de conexão com o SERPRO para envio de transações</description>
+
+	<properties>
+		<jdk.version>1.6</jdk.version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>br.com.autenticis.comven</groupId>
+			<artifactId>axis</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>/${project.basedir}/lib/axis.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>br.com.autenticis.comven</groupId>
+			<artifactId>jaxrpc</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>/${project.basedir}/lib/jaxrpc.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>br.com.autenticis.comven</groupId>
+			<artifactId>jaxrpc-api</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>/${project.basedir}/lib/jaxrpc-api.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>br.com.autenticis.comven</groupId>
+			<artifactId>jaxrpc-impl</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>/${project.basedir}/lib/jaxrpc-impl.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>br.com.autenticis.comven</groupId>
+			<artifactId>jaxrpc-spi</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>/${project.basedir}/lib/jaxrpc-spi.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>br.com.autenticis.comven</groupId>
+			<artifactId>jna</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>/${project.basedir}/lib/jna.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>br.com.autenticis.comven</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>/${project.basedir}/lib/log4j.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>br.com.autenticis.comven</groupId>
+			<artifactId>platform</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>/${project.basedir}/lib/platform.jar</systemPath>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>connector</finalName>
+		<plugins>
+
+			<!-- download source code in Eclipse, best practice -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>false</downloadJavadocs>
+				</configuration>
+			</plugin>
+
+
+			<!-- Set a JDK compiler level -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<encoding>ISO-8859-1</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.10</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+							<overWriteReleases>true</overWriteReleases>
+							<overWriteSnapshots>true</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<!-- <classpathPrefix>lib</classpathPrefix> -->
+							<!-- <mainClass>test.org.Cliente</mainClass> -->
+						</manifest>
+						<manifestEntries>
+							<Class-Path>lib/</Class-Path>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+
+		</plugins>
+		<sourceDirectory>src</sourceDirectory>
+	</build>
+
+</project>

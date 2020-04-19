@@ -46,7 +46,7 @@ public class ConnectorICOM implements IConnector {
 					}
 					
 				}else{
-					throw new Exception("Falha ao estabelecer comunicação com o sistema central");
+					throw new Exception("Falha ao estabelecer comunica��o com o sistema central");
 				}
 				
 			}catch (Exception e){
@@ -89,7 +89,7 @@ public class ConnectorICOM implements IConnector {
 		
 		try {
 			
-			// busca a biblioteca que será utilizada pelo conector pra se comunicar com o ICOM
+			// busca a biblioteca que sera utilizada pelo conector pra se comunicar com o ICOM
 			ICLibrary connectorLibrary = LibraryFactory.getLibraryFactory();
 			
 			// busca o arquivo de configuracao utilizado pelo conector para se comunicar com o ICOM
@@ -122,11 +122,11 @@ public class ConnectorICOM implements IConnector {
 	}
 
 	/**
-	 * Fecha o conectorT do ICOM liberando a memoria alocada para sua execução.
+	 * Fecha o conectorT do ICOM liberando a memoria alocada para sua execucaoo.
 	 *
 	 * @author rrodrigues / asodre
-	 * @return true: conexão fechada com sucesso
-	 * @throws ConnectorException : falha ao fechar conexão
+	 * @return true: conexao fechada com sucesso
+	 * @throws ConnectorException : falha ao fechar conexao
 	 */
 	private boolean fecharConector(){
 		
@@ -139,7 +139,7 @@ public class ConnectorICOM implements IConnector {
 		
 		try {
 			
-			// busca a biblioteca que será utilizada pelo conector pra se comunicar com o ICOM
+			// busca a biblioteca que sera utilizada pelo conector pra se comunicar com o ICOM
 			ICLibrary connectorLibrary = LibraryFactory.getLibraryFactory();
 			
 			// iniciar o conector
@@ -169,16 +169,16 @@ public class ConnectorICOM implements IConnector {
 	}
 	
 	/**
-	 * Envia uma transação para o sistema central
+	 * Envia uma transacao para o sistema central
 	 * 
 	 * @author rrodrigues / asodre
-	 * @param pedido : string contendo a transação que será enviada ao sistema central
-	 * @return true : transação realizada com sucesso
+	 * @param pedido : string contendo a transacao que sera enviada ao sistema central
+	 * @return true : transacao realizada com sucesso
 	 * @throws Exception
 	 */
 	private String comunicarTransacaoSistemaCentral(String pedido) throws Exception {
 		
-		logger.info("1 - Comunicando Transação");
+		logger.info("1 - Comunicando Transacao");
 		
 		// carregando o connector
 		byte[] conectorStatus = new byte[30];

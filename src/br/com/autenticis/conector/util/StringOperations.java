@@ -1,6 +1,7 @@
 package br.com.autenticis.conector.util;
 
 public class StringOperations {
+	@SuppressWarnings("unused")
 	private static final String UPPERCASE_ASCII =
 	    "AEIOU" // grave
 	    + "AEIOUY" // acute
@@ -12,7 +13,8 @@ public class StringOperations {
 	    + "OU" // double acute
 	    ;
 
-	  private static final String UPPERCASE_UNICODE =
+	  @SuppressWarnings("unused")
+	private static final String UPPERCASE_UNICODE =
 	    "\u00C0\u00C8\u00CC\u00D2\u00D9"
 	    + "\u00C1\u00C9\u00CD\u00D3\u00DA\u00DD"
 	    + "\u00C2\u00CA\u00CE\u00D4\u00DB\u0176"
